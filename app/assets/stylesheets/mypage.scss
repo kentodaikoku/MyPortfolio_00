@@ -1,0 +1,208 @@
+
+
+.profile-container {
+    width: 100%;
+    min-width: 100vh;
+    margin: 150px auto 250px;
+    padding: 0 40px;
+    color: #404040;
+}
+
+.profile {
+    margin: 50px 0;
+    border: solid 3px #B0C4DE;
+    padding: 35px 20px 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #B0C4DE;
+}
+
+.prof-section1 {
+    display: flex;
+    justify-content: center;
+}
+
+.prof-section1 li {
+    padding: 0 100px;
+}
+
+.prof-img {
+    border-radius: 30px;
+}
+
+.prof-name {
+    display: block;
+    font-size: 23px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.prof-section2 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.prof-section2 li {
+    padding: 5px 0;
+}
+
+.prof-btn {
+    display: inline-block;
+    border-radius: 20px;
+    margin-bottom: 25%;
+}
+
+
+// ユーザー投稿一覧デザイン & いいね投稿一覧デザイン // ======================================
+.view-posts {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 150px;
+    border-right: solid 6px #B0C4DE;
+    border-left: solid 6px #B0C4DE;
+}
+
+.prof-posts, .prof-likes {
+    padding: 0 75px;
+    width: 100%;
+}
+
+.prof-posts {
+    border-right: solid 3px #B0C4DE;
+}
+
+.prof-likes {
+    border-left: solid 3px #B0C4DE;
+}
+
+.prof-posts h2, .prof-likes h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #404040;
+    letter-spacing: 2px;
+    border-bottom: solid 3px #404040;
+    padding-bottom: 20px;
+}
+
+.prof-each-posts, .likes-each-posts {
+    height: 800px;
+    width: 100%;
+    margin-top: 50px;
+    overflow: scroll;
+    // background-color: #FCF9F2;
+    // border-radius: 3px;
+}
+
+.p-posts, .l-posts {
+    display: flex;
+    flex-direction: column;
+    margin: 25px 20px;
+    padding: 10px 15px;
+    color: #404040;
+    background-color: #FCF9F2;
+    border-left: solid 5px #B0C4DE;/*左側の線*/
+    border-top: solid 2px #dadada;
+    border-bottom: solid 2px #dadada;/*下に灰色線*/
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px -5px #B0C4DE;
+    line-height: 1.5;
+}
+
+.p-posts li, .l-posts li {
+    padding-top: 7px;
+}
+
+
+// レスポンシブデザイン // ==============================================================
+@media (max-width: 1000px) {
+    .profile-container {
+        min-width: 100%;
+        margin: 100px auto 200px;
+    }
+
+    .profile {
+        min-width: 100%;
+    }
+
+    .prof-section1  li {
+        padding: 0 10px;
+    }
+
+    .prof-img {
+        width: 120px;
+    }
+
+    .prof-name {
+        font-size: 15px;
+    }
+
+    .prof-section2 li {
+        padding: 5px 0;
+    }
+
+    .prof-btn {
+        margin-bottom: 20px;
+    }
+
+    .view-posts {
+        flex-direction: column;
+    }
+
+    .prof-posts {
+        border-right: none;
+        margin-bottom: 100px;
+    }
+    
+    .prof-likes {
+        border-left: none;
+    }
+
+    .prof-posts, .prof-likes {
+        padding: 0 40px;
+    }
+
+    .prof-each-posts, .likes-each-posts {
+        height: 500px;
+        min-width: 100%;
+    }
+
+    .p-posts, .l-posts {
+        margin: 25px 15px;
+        padding: 10px 15px;
+    }
+    
+    .p-posts li, .l-posts li {
+        padding-top: 5px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .prof-section1 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .prof-name {
+        font-size: 20px;
+    }
+
+    .prof-img {
+        width: 75%;
+    }
+
+    .prof-section2 {
+        text-align: center;
+    }
+
+    .prof-posts, .prof-likes {
+        padding: 0 15px;
+    }
+
+    .p-posts iframe, .l-posts iframe {
+        height: 180px;
+    }
+
+}

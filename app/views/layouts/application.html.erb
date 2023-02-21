@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MOTIVADER</title>
+    <meta charset="utf-8">
+    <%# レスポンシブデザイン用 %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <%# google fonts %>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header>
+      
+      <h1><strong><%= link_to "MOTIVADER", root_path %></strong></h1>
+
+      <div class="header-list">
+        <ul>
+          <li>
+            <i class="fas fa-home"></i>
+            <%= link_to "ホーム", posts_path %>
+          </li>
+          <li>
+            <i class="far fa-comment"></i>
+            <%= link_to "新規投稿", new_post_path %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+              <i class="far fa-address-card"></i>
+              <%= link_to "マイページ", user_path(current_user.id) %>
+            </li>
+            <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-secondary logout" %></li>
+          <% else %>
+            <li><%= link_to "新規登録", new_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <%# ハンバーガーメニュー %>
+        <input id="menu" type="checkbox" />
+        <label for="menu" class="fa fa-bars open"></label>
+        <label for="menu" class="back"></label>
+
+      <%# ハンバーガーメニュー %>
+      <div id="navi">
+
+        <label for="menu" class="fas fa-times close"></label>
+        <ul class="navi-1">
+          <li class="navi-2">
+            <i class="fas fa-home"></i>
+            <%= link_to "ホーム", posts_path %>
+          </li>
+            <ul>
+                <li class="navi-3">
+                    <i class="fas fa-book"></i>
+                    <%= link_to "書籍", posts_books_path %>
+                </li>
+                <li class="navi-3">
+                    <i class="fab fa-microblog"></i>
+                    <%= link_to "名言", posts_words_path %>
+                </li>
+                <li class="navi-3">
+                    <i class="fab fa-youtube"></i>
+                    <%= link_to "動画", posts_videos_path %>
+                </li>
+                <li class="navi-3">
+                    <i class="fas fa-book-reader"></i>
+                    <%= link_to "漫画", posts_comics_path %>
+                </li>
+            </ul>         
+          <li class="navi-2">
+            <i class="far fa-comment"></i>
+            <%= link_to "新規投稿", new_post_path %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="navi-2">
+              <i class="far fa-address-card"></i>
+              <%= link_to "マイページ", user_path(current_user.id) %>
+            </li>
+            <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-secondary logout" %></li>
+          <% else %>
+            <li class="navi-2"><%= link_to "新規登録", new_user_registration_path %></li>
+            <li class="navi-2"><%= link_to "ログイン", new_user_session_path %></li>
+          <% end %>
+        </ul>
+
+      </div>
+
+    </header>
+
+
+    <main>
+      <%= yield %>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">MOTIVADER</div>
+        <div class="footer-contents">
+          <p><%= link_to 'MOTIVADERについて', motivader_about_path %></p>
+          <p><%= link_to '開発者について', motivader_view_path %></p>
+          <p class="copyright">Copyright © MOTIVADER All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

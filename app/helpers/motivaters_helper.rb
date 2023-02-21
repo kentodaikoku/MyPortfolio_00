@@ -1,0 +1,2 @@
+module MotivatersHelper
+end

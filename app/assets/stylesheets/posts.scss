@@ -1,0 +1,383 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// #FA5882 likered
+// #00ebc7 turquoise
+// #010326 naivy
+
+
+.posts-top {
+    padding: 100px 0;
+    min-height: 100vh;
+    display: flex;
+}
+
+.user-name {
+    color: #696969;
+    font-weight: bold;
+}
+
+#res-search {
+    display: none;
+}
+
+// 左表示 ＝＝＝===============================================================================
+aside {
+    width: 25%;
+    min-width: 250px;
+}
+
+.search, .each-links, .rank {
+    margin: 0 0 50px 70px;
+}
+
+.each-links, .rank {
+    background-color: #FCF9F2;
+    border-radius: 3px;
+}
+
+.genre-title, .rank-title {
+    display: inline-block;
+    width: 100%;
+    background-color: #B0C4DE;
+    color: #f9fbfe;;
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+// 検索 ＝＝＝=================================================================================
+
+.search b, #res-search b {
+    color: #696969;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.search .btn, #res-search .btn {
+    margin-left: 5px;
+}
+
+.search input[type="text"], #res-search input[type="text"] {
+    width: 100%;
+}
+
+.search .btn:hover, #res-search .btn:hover {
+    background-color: #FA5882;
+
+}
+
+// カテゴリー ＝＝＝===============================================================================
+.each-links {
+    height: 300px;
+}
+
+.category {
+    display: flex;
+    padding-top: 40px;
+    padding-left: 35px;
+}
+
+.category ul {
+    padding: 0 30px;
+}
+
+.category ul li {
+    padding-bottom: 30px;
+}
+
+.genre-link {
+    padding-left: 10px;
+}
+
+.category a {
+    color: #696969;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.category a:hover {
+    color: #FA5882;
+}
+
+.category i {
+    font-size: 23px;
+}
+
+// ランキング ＝＝＝===============================================================================
+.rank {
+    height: 1000px;
+}
+
+.rank-posts {
+    padding: 10px;
+    height: 100%;
+    overflow: scroll;
+    background-color: #FCF9F2;
+}
+
+.rank-posts ul {
+    border-bottom: double 6px #B0C4DE;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.rank-posts ul li {
+    padding-bottom: 5px;
+}
+
+.user-img-rank {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.rank-btn {
+    height: 35px;
+    width: 80px;
+    font-size: 13px;
+}
+
+
+
+
+// 投稿一覧 ＝＝＝==================================================================================
+.posts-container {
+    width: 700px;
+    margin: 0 auto;
+    padding-bottom: 70px;
+}
+
+.each-posts {
+    display: flex;
+    flex-direction: column;
+    height: 2000px;
+    overflow: scroll;
+    margin-bottom: 75px;
+}
+
+.post {
+    height: auto;
+    width: 650px;
+    padding: 25px 0 30px 30px;
+    color: #404040;
+    background-color: #FCF9F2;
+    border-left: solid 5px #B0C4DE;/*左側の線*/
+    border-top: solid 2px #dadada;
+    border-bottom: solid 2px #dadada;/*下に灰色線*/
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px -5px #B0C4DE;
+    margin-bottom: 50px;
+    line-height: 1.5;
+}
+
+.post li {
+    padding: 5px;
+}
+
+time {
+    float: right;  
+    opacity: 0.75;
+    margin-right: 30px;
+}
+
+.user-img {
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+
+.view {
+    border-radius: 3px;
+}
+
+    // box-shadow: 10px 10px red;
+
+.left-btn {
+    float: left;
+    margin-right: 30px;
+    height: 35px;
+    width: 80px;
+    font-size: 13px;
+}
+
+.delete-btn {
+    float: right;
+    margin-right: 30px;
+    height: 35px;
+    width: 80px;
+    font-size: 13px;
+}
+
+.delete-btn:hover {
+    background-color: #FA5882;
+}
+
+
+// showページ ================================================================================
+
+.show-post {
+    height: auto;
+    width: 700px;
+    margin: 75px auto;
+    padding: 30px;
+    color: #404040;
+    background-color: #FCF9F2;
+    border-radius: 3px;
+    box-shadow: 0 0 30px #B0C4DE;
+    line-height: 1.5;
+}
+
+.show-post ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.show-post li {
+    padding: 5px;
+}
+
+.comment-wrapper {
+    height: auto;
+    width: 600px;
+    margin: 50px auto;
+    padding: 50px 0;
+    margin-bottom: 200px;
+}
+
+.each-comments {
+    padding: 15px 0;
+}
+
+.user-img-com {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.comment {
+    border-bottom: solid 2px #ADD8E6;
+    margin-bottom: 5px;
+}
+
+.com-form {
+    margin-bottom: 10px;
+}
+
+
+// カテゴリー別投稿一覧デザイン // ================================
+.genre-container {
+    margin: 100px auto 0;
+}
+
+.genre-posts {
+    margin-bottom: 0;
+}
+
+.genre-posts .posts {
+    margin-bottom: 0;
+}
+
+
+// レスポンシブデザイン　// ================================================================
+@media (max-width: 1000px) {
+    .posts-top {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    #res-search {
+        display: block;
+        margin: 0 30px 50px 30px;        
+    }
+
+    aside {
+        width: 90%;
+    }
+
+    .search, .each-links {
+        display: none;
+    }
+
+    .rank {
+        margin: 0 15px 150px 35px;
+        height: 800px;
+    }
+
+    .posts-container {
+        width: 90%;
+        padding: 0 10px 70px 10px;
+    }
+
+    .each-posts {
+        display: flex;
+        flex-direction: column;
+        height: 1500px;
+        overflow: scroll;
+        margin-bottom: 40px;
+    }
+
+    .post {
+        width: 90%;
+    }
+
+    .post iframe {
+        height: 200px;
+    }
+
+    .bodies {
+        width: 90%;
+    }
+
+    .videos {
+        height: 200px;
+    }
+
+    .left-btn, .delete-btn, .rank-btn {
+        margin-right: 20px;
+        height: 30px;
+        width: 70px;
+        font-size: 10px;
+    }
+
+        // height: auto;
+        // width: 650px;
+        // padding: 25px 0 30px 30px;
+        // color: #404040;
+        // background-color: #FCF9F2;
+        // border-left: solid 5px #B0C4DE;/*左側の線*/
+        // border-top: solid 2px #dadada;
+        // border-bottom: solid 2px #dadada;/*下に灰色線*/
+        // border-radius: 10px;
+        // box-shadow: 10px 10px 15px -5px #B0C4DE;
+        // margin-bottom: 50px;
+        // line-height: 1.5;
+
+    .show-post {
+        width: 90%;
+    }
+
+    .show-post iframe {
+        height: 200px;
+    }
+
+    .comment-wrapper {
+        width: 90%;
+        margin-bottom: 150px;
+    }
+
+    .user-img-com {
+        width: 35px;
+    }
+
+
+    .genre-container {
+        margin: 50px auto;
+    }
+}

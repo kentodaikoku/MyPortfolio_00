@@ -1,0 +1,167 @@
+<%= stylesheet_link_tag 'posts', media: 'all' %>
+
+<div class="page-title">
+    <h1>BOOKS</h1>
+</div>
+
+<div class="posts-top">
+
+    <aside>
+        <%# 検索機能  %>
+        <div class="search">
+            <b>キーワード検索</b>
+            <%= form_tag({controller:"posts",action:"index"}, method: :get, class: "d-flex") do %>
+                <%= text_field_tag :search %>
+                <%= submit_tag "検索する", class: "btn btn-outline-success" %>
+            <% end %>
+        </div>
+
+        <%# カテゴリー機能 %>
+        <nav class="each-links">
+            <p class="genre-title">カテゴリー</p>
+            <ul class="category">
+                <li>
+                    <ul>
+                        <li>
+                            <i class="fas fa-book"></i>
+                            <%= link_to "書籍", posts_books_path, class: "genre-link" %>
+                        </li>
+                        <li>
+                            <i class="fab fa-microblog"></i>
+                            <%= link_to "名言", posts_words_path, class: "genre-link" %>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>
+                            <i class="fab fa-youtube"></i>
+                            <%= link_to "動画", posts_videos_path, class: "genre-link" %>
+                        </li>
+                        <li>
+                            <i class="fas fa-book-reader"></i>
+                            <%= link_to "漫画", posts_comics_path, class: "genre-link" %>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <%# rank機能 %>
+        <div class="rank">
+            <p class="rank-title">ランキング</p>
+            <div class="rank-posts">
+                        <% i=1 %>
+                <% @rank_posts.each do |t| %>
+                    <ul>
+                        <li>
+                            <strong><%= i %>位</strong>
+                            <a href="/users/<%= t.user.id %>", class="user-name"><%= image_tag t.user.image_url, class: "user-img-rank" %><%= t.user.name %></a>
+                        </li>
+
+                        <li><%= image_tag t.image_url, width: "100%", class: "view" if t.image? %></li>
+                        <li><%=  video_tag t.video_url , :controls => true, width: "100%", class: "view" if t.video? %></li>
+                        <%# 動画を自動再生させたい人は:autoplay => true や繰り返し再生させたい人は:loop => true %>
+                        <li>
+                            <% if t.youtube_url.present? %>
+                                <iframe class="view" width="100%" height="200px" src="https://www.youtube.com/embed/<%= t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <% end %>
+                        </li>
+
+                        <li>
+                            <% if t.title.present? %>
+                                タイトル：<%= t.title %>
+                            <% end %>
+                        </li>
+
+                        <li><%= t.body %></li>
+
+                        <li>
+                            <% if t.who.present? %>
+                                人物名：<%= t.who %>
+                            <% end %>
+                        </li>
+
+                        <li><%= link_to "詳細へ", post_path(t.id), class: "btn btn-outline-primary rank-btn" %></li>
+
+                        <% i+=1 %>
+                    </ul>
+                <% end %>
+            </div>
+        </div>  
+    </aside>
+
+    <div class="posts-container genre-container">
+        <p><%= page_entries_info @posts %></p>
+
+        <div class="each-posts genre-posts">
+            <% @posts.each do |t| %>
+                <div class="post">
+                    <ul>
+
+                        <li>
+                            <a href="/users/<%= t.user.id %>", class="user-name"><%= image_tag t.user.image_url, class: "user-img" %><%= t.user.name %></a>
+                            <time><%= t.created_at.to_s(:datetime_jp) %></time>
+                        </li>
+
+                        <li><%= image_tag t.image_url, width: "90%", class: "view" if t.image? %></li>
+
+                        <li><%=  video_tag t.video_url , :controls => true, width: "90%", height: "380", class: "view" if t.video?%></li>
+                        <%# 動画を自動再生させたい人は:autoplay => true や繰り返し再生させたい人は:loop => true %>
+
+                        <li>
+                            <% if t.youtube_url.present? %>
+                                <iframe class="view" width="90%" height="380" src="https://www.youtube.com/embed/<%= t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <% end %>
+                        </li>
+
+                        <li>
+                            <% if t.title.present? %>
+                                タイトル：<%= t.title %>
+                            <% end %>
+                        </li>
+
+                        <li><%= t.body %></li>
+
+                        <li>
+                            <% if t.who.present? %>
+                                人物名：<%= t.who %>
+                            <% end %>
+                        </li>
+
+                        <%# いいね表示機能 %>
+                        <li>
+                            <% if user_signed_in? %>
+                                <% if current_user.already_liked?(t) %>
+                                    <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                                        <i class="fas fa-thumbs-up"></i><%= t.likes.count %>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                                        <i class="far fa-thumbs-up"></i><%= t.likes.count %>
+                                    <% end %>
+                                <% end %>
+                            <% else %>
+                                <i class="far fa-thumbs-up"></i><%= t.likes.count %>
+                            <% end %><br>
+                        </li>
+                        <%#             %>
+                        
+                        <li>
+                            <%= link_to "詳細へ", post_path(t.id), class: "btn btn-outline-primary left-btn" %>
+
+                            <% if user_signed_in? && current_user.id == t.user_id %>
+                                <%= link_to "編集する", edit_post_path(t.id), class: "btn btn-outline-primary left-btn" %>
+                                <%= button_to "削除する", post_path(t.id), method: :delete, class: "btn btn-secondary delete-btn" %>
+                            <% end %>
+                        </li>
+                    </ul>
+
+                </div>
+            <% end %>
+        </div>
+
+        <p><%= paginate @posts %></p>
+
+    </div>
+</div>

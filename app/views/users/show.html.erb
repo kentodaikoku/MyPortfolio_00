@@ -1,0 +1,101 @@
+<%= stylesheet_link_tag 'mypage', :media => "all" %>
+
+<div class="page-title">
+    <h1>MY PROFILE</h1>
+</div>
+
+
+<div class="profile-container">
+
+    <div class="profile">
+        <ul class="prof-section1">
+            <li>
+                <%= image_tag @user.image_url, class: "prof-img", width: "250px", height: "auto" if @user.image? %>
+                <p class="prof-name"><%= @user.name %></p>
+            </li>
+            <li>
+                <ul class="prof-section2">
+                    <li>
+                        <% if current_user.id == @user.id %>
+                            <%= link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-outline-primary prof-btn" %>
+                        <% end %>
+                    </li>
+                    <li>
+                        <% if current_user.id == @user.id %>
+                            <%= @user.email %>
+                        <% end %>
+                    </li>
+                    <li><%= @user.profile %></li>
+                </ul>
+            </li>
+            
+        </ul>
+    </div>
+
+    <div class="view-posts">
+
+        <div class="prof-posts">
+            <h2>投稿一覧</h2>
+            <div class="prof-each-posts">
+                <% @user.posts.each do |t| %>
+                    <ul class="p-posts">
+                        <li>
+                            <%= t.created_at.to_s(:datetime_jp) %>
+                        </li>
+                        <li><%= image_tag t.image_url, width: "80%", class: "view res-view" if t.image? %></li>
+                        <li><%=  video_tag t.video_url , :controls => true, width: "90%", height: "380", class: "view res-view" if t.video?%></li>
+                        <li>
+                            <% if t.youtube_url.present? %>
+                                <iframe class="view res-view" width="90%" height="380" src="https://www.youtube.com/embed/<%= t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <% end %>
+                        </li>
+                        <li>
+                            <% if t.title.present? %>
+                                タイトル：<%= t.title %>
+                            <% end %>
+                        </li>
+                        <li><%= t.body %></li>
+                        <li>
+                            <% if t.who.present? %>
+                                人物名：<%= t.who %>
+                            <% end %>
+                        </li>
+                    </ul>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="prof-likes">
+            <h2>いいね一覧</h2>
+            <div class="likes-each-posts">
+                <% @user.liked_posts.each do |t| %>
+                    <ul class="l-posts">
+                        <li>
+                            <a href="/users/<%= t.user.id %>", class="user-name"><%= image_tag t.user.image_url, class: "user-img-rank " %><%= t.user.name %></a>
+                            <%= t.created_at.to_s(:datetime_jp) %>
+                        </li>
+                        <li><%= image_tag t.image_url, width: "80%", class: "view res-view" if t.image? %></li>
+                        <li><%=  video_tag t.video_url , :controls => true, width: "90%", height: "380", class: "view res-view" if t.video?%></li>
+                        <li>
+                            <% if t.youtube_url.present? %>
+                                <iframe class="view res-view" width="90%" height="380" src="https://www.youtube.com/embed/<%= t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <% end %>
+                        </li>
+                        <li>
+                            <% if t.title.present? %>
+                                タイトル：<%= t.title %>
+                            <% end %>
+                        </li>
+                        <li><%= t.body %></li>
+                        <li>
+                            <% if t.who.present? %>
+                                人物名：<%= t.who %>
+                            <% end %>
+                        </li>
+                    </ul>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+</div>

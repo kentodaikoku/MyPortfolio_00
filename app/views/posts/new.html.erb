@@ -1,0 +1,60 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<div class="page-title">
+    <h1>NEW POST</h1>
+</div>
+
+<div class="new-post">
+    <div class="new-container">
+        
+        <%= form_for @post do |t| %>
+
+            <div class="field">
+                <strong><%= t.label :タイトル %></strong><br>
+                <%= t.text_field :title, :size => 30, placeholder: '書籍名など入力してね' %>
+            </div>
+
+            <div class="field">
+                <strong><%= t.label :投稿内容 %></strong><br>
+                <%= t.text_area :body, :size => "30x5" %>
+            </div>
+
+            <div class="field">
+                <strong><%= t.label :出版年 %></strong><br>
+                <%= t.date_select :published_year, {prompt: "選択してください", start_year: 1990, discard_month: true, discard_day: true} %>
+            </div>
+
+            <div class="field">
+                <strong><%= t.label :人物名 %></strong><br>
+                <%= t.text_field :who, :size => 30, placeholder: '作者や発言者の名前' %>
+            </div>
+
+            <div class="field">
+                <strong>画像</strong><br>
+                <%= t.label :image, "ファイルを選択", class: "media-file" %>
+                <%= t.file_field :image, style: "display: none;" %>
+            </div>
+
+            <div class="field">
+                <strong>動画</strong><br>
+                <%= t.label :video, "ファイルを選択", class: "media-file" %>
+                <%= t.file_field :video, style: "display: none;" %>
+            </div>
+
+            <div class="field">
+                <strong><%= t.label :YouTubeのURL %></strong><br>
+                <%= t.text_field :youtube_url, :size => 30, placeholder: 'youtubeのurl' %>
+            </div>
+
+            <div class="field">
+                <strong><%= t.label :ジャンル %></strong><br>
+                <%= t.select :jenre, [["書籍", "書籍"], ["動画", "動画"], ["漫画", "漫画"], ["名言", "名言"]], include_blank: "選択してください" %>
+            </div>
+
+            <div class="field">
+                <%= t.submit "投稿する", class: "btn btn-outline-primary submit" %></p>
+            </div>
+
+        <% end %>
+    </div>
+</div>

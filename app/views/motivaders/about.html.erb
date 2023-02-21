@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag 'motivaters', :media => "all" %>
+
+
+<div class="about-main">
+    <div class="about-top">
+        <div class="top-contents">
+            <h1><strong><span>MOTIVADER</span>について</strong></h1>
+            <h4><strong>こちらのページはMOTIVADERについての紹介ページです！</strong></h4>
+            <div id="player" class="palyer">
+                <iframe class="about-media" width="700" height="475" src="https://www.youtube.com/embed/4FTOHJ_Ma-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="about-contents">
+        <h3 class="contents-title">MOTIVADERで<span>'モチベ'</span>をシェアリング</h3>
+        <div class="contents-item">
+            <ul>
+                <li>
+                    <p><img src="/books-image.png" width="600px"></p>
+                    <p class="about-sentence">おすすめの書籍を紹介</p>
+                </li>
+        
+                <li>
+                    <p><img src="/videos-image.png" width="600px"></p>
+                    <p class="about-sentence">お気に入りの動画を発信</p>
+                </li>
+
+                <li>
+                    <p><img src="/comics-image.png" width="600px"></p>
+                    <p class="about-sentence">心が震える漫画を発見</p>
+                </li>
+
+                <li>
+                    <p class="last-img"><img src="/words-image.png" width="600px"></p>
+                    <p class="about-sentence">言葉のエネルギーを力に</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="about-form">
+        <div class="form-title">
+            <h2>Let's Share Your Motivation.</h2>
+        </div>
+        <div class="link-for">
+            <%= link_to '新規登録', new_user_registration_path, class: "about-link btn-signup" %>
+            <%= link_to 'ログイン', new_user_session_path, class: "about-link btn-login" %>
+            <p class="link-home"><%= link_to 'トップページへ戻る←', root_path %></p>
+        </div>
+    </div>
+</div>
